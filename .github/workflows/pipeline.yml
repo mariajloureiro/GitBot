@@ -1,0 +1,72 @@
+name: CI Pipeline - GitBot Testes Automatizados
+
+on:
+  push:
+    branches: [ main, master ]
+  pull_request:
+    branches: [ main, master ]
+
+jobs:
+  # 1. Execução de Testes Unitários
+  unit-tests:
+    name: 🧪 Testes Unitários (Jest)
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout do Repositório
+        uses: actions/checkout@v4
+
+      - name: Configurar Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 18
+
+      - name: Instalar Dependências
+        run: npm ci
+
+      - name: Executar Testes Unitários
+        run: npm run test:unit
+
+  # 2. Execução de Testes de Integração
+  integration-tests:
+    name: 🔗 Testes de Integração (Cypress)
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout do Repositório
+        uses: actions/checkout@v4
+
+      - name: Configurar Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 18
+
+      - name: Instalar Dependências
+        run: npm ci
+
+      - name: Executar Testes de Integração (Cypress Headless)
+        uses: cypress-io/github-action@v6
+        with:
+          start: npx http-server -p 8080 .
+          wait-on: 'http://localhost:8080'
+          browser: chrome
+
+  # 3. Execução de Testes de Performance
+  performance-tests:
+    name: ⚡ Testes de Performance (Lighthouse)
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout do Repositório
+        uses: actions/checkout@v4
+
+      - name: Configurar Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 18
+
+      - name: Instalar Dependências
+        run: npm ci && npm install -g http-server
+
+      - name: Iniciar Servidor Local
+        run: npx http-server -p 8080 . &
+
+      - name: Executar Testes de Performance
+        run: npm run test:performance

@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GitBot — Aprenda Git na prática</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+
+  <!-- Top Navigation Header -->
+  <header class="top-nav">
+    <div class="nav-brand" onclick="goToLandingPage()" style="cursor: pointer;" title="Voltar ao início">
+      <i class="fa-solid fa-robot brand-icon"></i>
+      <span><strong>GitBot</strong></span>
+    </div>
+    <nav class="nav-links">
+      <!-- Botão escondido por padrão na Landing Page -->
+      <a href="#" id="nav-reset" onclick="resetChat()" style="display: none;">
+        <i class="fa-solid fa-rotate-right"></i> Reiniciar Conversa
+      </a>
+    </nav>
+  </header>
+
+  <!-- Container Principal -->
+  <main class="main-container">
+
+    <!-- TELA 1: LANDING PAGE -->
+    <section id="welcome-screen" class="screen active-screen">
+      <div class="landing-content">
+        <div class="hero-text">
+          <span class="badge-tech">TECNOLOGIA EDUCATIVA</span>
+          <h1>Aprenda Git na prática com o <span>GitBot</span></h1>
+          <p>
+            Esqueça as listas de comandos decorados! O GitBot guia o seu aprendizado através de desafios, dicas inteligentes, modo quiz e gamificação com pontos e níveis.
+          </p>
+          <div class="hero-features">
+            <div class="feature-tag"><i class="fa-solid fa-lightbulb"></i> Sistema de Dicas</div>
+            <div class="feature-tag"><i class="fa-solid fa-brain"></i> Desafios & Quiz</div>
+            <div class="feature-tag"><i class="fa-solid fa-trophy"></i> Ranking de Pontos</div>
+          </div>
+          <button class="btn-primary" onclick="startApp()">
+            Começar Agora <i class="fa-solid fa-arrow-right"></i>
+          </button>
+        </div>
+
+        <div class="hero-illustration">
+          <div class="phone-mockup">
+            <div class="phone-screen">
+              <div class="chat-bubble bubble-1">
+                <i class="fa-solid fa-robot"></i>
+                <span>Qual comando mostra o status do repositório?</span>
+              </div>
+              <div class="chat-bubble bubble-2">
+                <i class="fa-solid fa-user"></i>
+                <span>git status</span>
+              </div>
+              <div class="chat-bubble bubble-3">
+                <i class="fa-solid fa-circle-check"></i>
+                <span>Correto! 🎉 +10 pontos</span>
+              </div>
+              <div class="bot-3d-avatar">
+                <i class="fa-solid fa-robot"></i>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- TELA 2: CHAT INTERATIVO -->
+    <section id="chat-screen" class="screen">
+      
+      <!-- Cabeçalho do Protótipo -->
+      <div class="chat-banner">
+        <h2><i class="fa-solid fa-robot"></i> GitBot - Seu Amigo de Comandos</h2>
+      </div>
+
+      <!-- Barra de Status / Gamificação -->
+      <div class="status-bar">
+        <div class="status-item">
+          <i class="fa-solid fa-trophy"></i>
+          <span>Pontos: <strong id="score">0</strong></span>
+        </div>
+        <div class="status-item">
+          <i class="fa-solid fa-seedling"></i>
+          <span id="level">Iniciante 🌱</span>
+        </div>
+        <div class="progress-container">
+          <div class="progress-bar" id="progress-fill"></div>
+        </div>
+      </div>
+
+      <!-- Caixa Principal do Chat -->
+      <div class="chat-card">
+        <div class="chat-card-header">
+          <span>Conversa com GitBot</span>
+        </div>
+        
+        <div class="chat-body" id="chat-messages">
+          <!-- As mensagens serão inseridas dinamicamente via JS -->
+        </div>
+      </div>
+
+      <!-- Input do Usuário -->
+      <div class="chat-input-wrapper">
+        <input type="text" id="user-input" placeholder="Digite sua resposta ou comando aqui..." autocomplete="off">
+        <button class="btn-hint" id="hint-btn" onclick="requestHint()" title="Pedir Dica">
+          <i class="fa-solid fa-lightbulb"></i> Dica
+        </button>
+        <button class="btn-send" onclick="sendMessage()" title="Enviar Resposta">
+          <i class="fa-solid fa-paper-plane"></i>
+        </button>
+      </div>
+
+    </section>
+
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
