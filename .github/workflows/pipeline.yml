@@ -9,7 +9,7 @@ on:
 jobs:
   # 1. Execução de Testes Unitários
   unit-tests:
-    name: 🧪 Testes Unitários (Jest)
+    name:  Testes Unitários (Jest)
     runs-on: ubuntu-latest
     steps:
       - name: Checkout do Repositório
@@ -28,7 +28,7 @@ jobs:
 
   # 2. Execução de Testes de Integração
   integration-tests:
-    name: 🔗 Testes de Integração (Cypress)
+    name: Testes de Integração (Cypress)
     runs-on: ubuntu-latest
     steps:
       - name: Checkout do Repositório
@@ -51,7 +51,7 @@ jobs:
 
   # 3. Execução de Testes de Performance
   performance-tests:
-    name: ⚡ Testes de Performance (Lighthouse)
+    name: Testes de Performance (Lighthouse)
     runs-on: ubuntu-latest
     steps:
       - name: Checkout do Repositório
