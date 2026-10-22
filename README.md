@@ -1,359 +1,238 @@
-<div align="center">
-
 # 🤖 GitBot — Aprenda Git na Prática
 
-**Aprenda comandos Git com perguntas, dicas e desafios interativos.**
-Aplicação web educativa para aprender e praticar comandos Git por meio de um chat interativo, perguntas, dicas e quizzes. O projeto também demonstra testes automatizados e uma pipeline de integração contínua com GitHub Actions.
+Aplicação web educativa para aprender e praticar comandos **Git** por meio de um chat interativo, perguntas, dicas e quizzes. O projeto também demonstra testes automatizados e uma pipeline de integração contínua com GitHub Actions.
 
 Projeto acadêmico de Análise e Desenvolvimento de Sistemas (ADS).
 
-## 📖 1. Objetivo, problema e escopo
-
-### 🎯 Objetivo
-
-O **GitBot** é uma aplicação web educativa que ensina comandos Git por meio de uma conversa interativa. O usuário responde a desafios, recebe dicas, ganha pontos e acompanha seu nível de aprendizado.
-
-### 💡 Problema que pretende resolver
-
-Quem está começando a utilizar Git pode ter dificuldade para **lembrar os comandos** e **identificar quando utilizá-los**. Em vez de apenas ler uma lista de comandos, o GitBot permite praticar e receber feedback imediatamente.
-
-### 📌 Escopo do projeto
-
-| ✅ Incluído | 🚫 Fora do escopo |
-|---|---|
-| Página inicial e chat educativo | Executar comandos Git no computador do usuário |
-| Perguntas digitadas e quiz de alternativas | Autenticação e cadastro de contas |
-| Correção de respostas e dicas progressivas | Banco de dados em servidor |
-| Pontuação, níveis e barra de progresso | API própria ou integração com GitHub |
-| Reinício da conversa e retorno à tela inicial | Sincronização de progresso entre dispositivos |
-| Funções de armazenamento local presentes no código | Inteligência artificial generativa para respostas livres |
-
-> **Importante:** o GitBot utiliza perguntas e respostas previamente definidas em JavaScript. Não é um chatbot com IA generativa.
-
 ---
 
-## 🧾 2. Requisitos do sistema
+## 1. Objetivo e problema
 
-### Requisitos funcionais
+**Objetivo:** ajudar iniciantes a aprender e memorizar comandos Git com desafios práticos, feedback e pontuação.
+
+**Problema:** memorizar comandos Git e saber quando utilizá-los pode ser difícil para quem está começando. A prática guiada ajuda a reforçar o aprendizado.
+
+**Escopo**
+- **Incluído:** interface web, chat educativo, perguntas de texto, quizzes, dicas, correção de respostas, pontuação, níveis, reinício da conversa e armazenamento local do progresso.
+- **Fora do escopo:** execução real de comandos Git, autenticação, contas de usuários, sincronização em nuvem, API própria e banco de dados remoto.
+
+## 2. Requisitos
+
+### Funcionais
 
 | ID | Requisito |
 |---|---|
-| **RF01** | Exibir perguntas sobre comandos Git. |
-| **RF02** | Receber respostas digitadas pelo usuário. |
-| **RF03** | Apresentar perguntas de múltipla escolha. |
-| **RF04** | Verificar a resposta e mostrar se está correta ou incorreta. |
-| **RF05** | Oferecer dicas progressivas e, após esgotá-las, mostrar o gabarito. |
-| **RF06** | Somar 10 pontos por resposta correta. |
-| **RF07** | Atualizar o nível e a barra de progresso. |
-| **RF08** | Permitir reiniciar a conversa e a pontuação. |
-| **RF09** | Permitir retornar à tela inicial e encerrar a conversa. |
-| **RF10** | Disponibilizar funções para salvar e carregar progresso no navegador. **A chamada automática dessas funções ainda precisa ser integrada ao fluxo de uso.** |
+| RF01 | Apresentar perguntas e desafios sobre comandos Git. |
+| RF02 | Permitir respostas digitadas no chat. |
+| RF03 | Oferecer perguntas de múltipla escolha. |
+| RF04 | Conferir respostas e informar se estão corretas. |
+| RF05 | Oferecer dicas para as perguntas. |
+| RF06 | Somar pontos e atualizar o nível do usuário. |
+| RF07 | Permitir reiniciar a conversa e a pontuação. |
+| RF08 | Salvar e recuperar o progresso pelo navegador. |
+| RF09 | Permitir voltar à tela inicial. |
 
-### Requisitos não funcionais
+### Não funcionais
 
 | ID | Requisito |
 |---|---|
-| **RNF01** | Interface web construída com HTML5, CSS3 e JavaScript. |
-| **RNF02** | Execução em navegador moderno, sem backend próprio. |
-| **RNF03** | Separação entre conteúdo, apresentação e lógica. |
-| **RNF04** | Uso de `localStorage` para armazenamento local quando as funções forem acionadas. |
-| **RNF05** | Testes unitários com Jest. |
-| **RNF06** | Pipeline de CI no GitHub Actions para verificar testes e qualidade. |
-| **RNF07** | Interface com feedback claro ao usuário. |
+| RNF01 | Interface web desenvolvida em HTML, CSS e JavaScript. |
+| RNF02 | Funcionamento em navegadores modernos, sem backend obrigatório. |
+| RNF03 | Organização simples entre estrutura, estilos e lógica. |
+| RNF04 | Armazenamento local via `localStorage`. |
+| RNF05 | Testes unitários com Jest. |
+| RNF06 | Pipeline de CI no GitHub Actions para testes unitários, integração e performance. |
 
----
+**Diferenciais:** ensino em formato de conversa, dicas progressivas, quizzes e sistema de pontuação e níveis.
 
-## 🛠️ 3. Tecnologias utilizadas
+## 3. Tecnologias
 
-| Tecnologia | Para que serve no GitBot |
+| Item | Detalhe |
 |---|---|
-| **HTML5** | Cria a estrutura da página, do chat, dos botões e dos campos. |
-| **CSS3** | Define cores, layout e aparência da interface. |
-| **JavaScript** | Controla perguntas, respostas, dicas, pontuação e navegação. |
-| **localStorage** | Permite guardar dados no navegador; a integração automática está pendente. |
-| **Node.js + npm** | Instalam e executam as ferramentas de teste. |
-| **Jest 29** | Executa testes unitários. |
-| **Cypress 13** | Ferramenta configurada para testes de integração; os testes Cypress ainda não foram incluídos. |
-| **Lighthouse CI** | Avalia desempenho e acessibilidade. |
-| **GitHub Actions** | Executa a pipeline ao enviar alterações ao repositório. |
-| **Git / GitHub** | Versionamento e hospedagem do código. |
-| **Font Awesome (CDN)** | Disponibiliza ícones usados na interface. |
+| Interface | HTML5 e CSS3 |
+| Lógica | JavaScript no navegador |
+| Persistência | `localStorage` |
+| Dependências e scripts de teste | Node.js e npm |
+| Testes unitários | Jest 29 |
+| Testes de integração previstos | Cypress 13 |
+| Performance e acessibilidade | Lighthouse CI |
+| Integração contínua | GitHub Actions |
+| Controle de versão | Git e GitHub |
 
----
-
-## 🏗️ 4. Arquitetura e componentes
-
-O GitBot usa uma **arquitetura frontend estática**: o navegador carrega HTML, CSS e JavaScript e processa as interações localmente. Não existe servidor de API nem banco de dados remoto.
+## 4. Arquitetura
 
 ```mermaid
 flowchart TD
-    A[Usuário] --> B[Interface HTML e CSS]
-    B --> C[Lógica JavaScript]
-    C --> D[Perguntas e quizzes]
-    C --> E[Validação e dicas]
-    C --> F[Pontuação e níveis]
-    C -. Funções de salvar e carregar .-> G[localStorage]
-    H[GitHub Actions] --> I[Testes Jest]
-    H --> J[Cypress configurado]
-    H --> K[Lighthouse CI]
+    U[Usuário] --> I[Interface index.html]
+    I --> C[Estilos style.css]
+    I --> J[Lógica script.js]
+    J --> Q[Perguntas e quizzes]
+    J --> P[Pontuação e níveis]
+    J --> L[localStorage]
+    T[Testes Jest] -. valida .-> J
+    A[GitHub Actions] --> T
+    A --> X[Cypress previsto]
+    A --> H[Lighthouse CI]
 ```
 
-| Arquivo / componente | Responsabilidade |
-|---|---|
-| `index.html` | Elementos visuais, página inicial, chat e botões. |
-| `style.css` | Estilos, cores e organização visual. |
-| `script.js` | Banco de perguntas, validação, dicas, pontos, níveis e navegação. |
-| `tests/unit/gameLogic.test.js` | Testes unitários da comparação de respostas e dos níveis. |
-| `package.json` | Dependências e comandos npm. |
-| `.github/workflows/pipeline.yml` | Configuração dos jobs da CI. |
-| `.lighthouserc.json` | Configuração de desempenho e acessibilidade. |
+A arquitetura é **frontend estática**, sem servidor de aplicação próprio. A interface chama as funções de `script.js`, que gerenciam o chat, as respostas e a pontuação. O navegador armazena o progresso localmente.
 
-### 📁 5. Estrutura de pastas
+| Componente | Responsabilidade |
+|---|---|
+| `index.html` | Estrutura da página e elementos da interface. |
+| `style.css` | Aparência e organização visual. |
+| `script.js` | Perguntas, chat, dicas, respostas, pontuação, níveis e progresso. |
+| `tests/unit/gameLogic.test.js` | Testes unitários existentes. |
+| `.github/workflows/pipeline.yml` | Jobs de integração contínua. |
+| `.lighthouserc.json` | Configuração das verificações Lighthouse CI. |
+
+## 5. Estrutura de pastas
 
 ```text
 GitBot-main/
 ├── .github/
 │   └── workflows/
-│       └── pipeline.yml       # Pipeline de integração contínua
+│       └── pipeline.yml
 ├── tests/
 │   └── unit/
-│       └── gameLogic.test.js  # Testes unitários
-├── .lighthouserc.json         # Configuração Lighthouse
-├── index.html                 # Página principal
-├── style.css                  # Estilos visuais
-├── script.js                  # Regras do GitBot
-├── package.json               # Scripts e dependências
-├── package-lock.json          # Versões das dependências
-└── README.md                  # Esta documentação
+│       └── gameLogic.test.js
+├── .lighthouserc.json
+├── index.html
+├── style.css
+├── script.js
+├── package.json
+├── package-lock.json
+└── README.md
 ```
 
----
+## 6. Funcionamento do sistema
 
-## 🎮 6. Como utilizar o GitBot
+1. O usuário abre a página inicial e inicia o GitBot.
+2. O bot apresenta uma pergunta sobre Git.
+3. O usuário responde digitando um comando ou selecionando uma alternativa.
+4. O sistema avalia a resposta e fornece feedback.
+5. O usuário pode solicitar dicas para resolver desafios.
+6. Os acertos geram pontos, que determinam o nível exibido.
+7. O progresso pode ser armazenado no navegador.
 
-1. Abra a página `index.html` no navegador.
-2. Na tela inicial, clique para iniciar a experiência.
-3. Leia a pergunta que aparece no chat.
-4. Digite a resposta no campo de mensagem e envie com **Enter** ou selecione uma alternativa, quando for quiz.
-5. Se errar, tente novamente ou solicite uma **dica**. Depois de todas as dicas, o bot pode revelar a resposta e avançar.
-6. Ao acertar, você ganha **10 pontos** e avança para o próximo desafio.
-7. Acompanhe sua pontuação e seu nível. Use **Reiniciar Conversa** para começar de novo.
+**Exemplos de comandos abordados:** `git status`, `git branch feature`, `git init`, `git push` e `git add .`.
 
-### Exemplos de desafios
+## 7. Pré-requisitos
 
-| Pergunta | Resposta esperada |
-|---|---|
-| Como ver arquivos modificados? | `git status` |
-| Como criar a branch `feature`? | `git branch feature` |
-| Como iniciar um repositório? | `git init` (alternativa **B** no quiz) |
-| Como enviar commits ao remoto? | `git push` |
-| Como adicionar todos os arquivos à staging area? | `git add .` |
+- Navegador moderno (Chrome, Edge ou Firefox).
+- **Node.js 18** e npm para instalar dependências e executar testes (a pipeline utiliza Node.js 18).
+- Git, caso deseje clonar o repositório.
+- Opcional: servidor HTTP local para testes e execução via `localhost`.
 
-**Níveis definidos no código:** Iniciante (0 pontos), Aprendiz (20), Desenvolvedor (40), Git Expert (60) e Git Master (80). A versão enviada contém **cinco desafios**, portanto uma rodada perfeita alcança **50 pontos**; os dois níveis mais altos não são atingidos nessa rodada.
+Confira as instalações com `node -v`, `npm -v` e `git --version`.
 
----
+## 8. Instalação, configuração e execução
 
-## 🚀 7. Instalação, configuração e execução
-
-### 7.1 Pré-requisitos
-
-**Para apenas usar o GitBot:** navegador atualizado, como Chrome, Edge ou Firefox.
-
-**Para desenvolver e testar:** Git, Node.js e npm. A pipeline do repositório utiliza **Node.js 18**; para reproduzir o ambiente da CI, use essa versão.
-
-Confira se as ferramentas estão instaladas:
-
-```bash
-node -v
-npm -v
-git --version
-```
-
-### 7.2 Obter o projeto
-
-**Opção A — baixar ZIP:** no GitHub, clique em **Code → Download ZIP**, extraia e abra a pasta.
-
-**Opção B — clonar:** copie o endereço HTTPS do seu repositório e execute:
+### 1. Obter o projeto
 
 ```bash
 git clone URL_DO_SEU_REPOSITORIO
 cd GitBot-main
 ```
 
-> Substitua `URL_DO_SEU_REPOSITORIO` pela URL real. O nome da pasta criada pelo clone depende do repositório; ajuste o `cd` se necessário.
+Substitua a URL pelo endereço real do repositório. Também é possível baixar e extrair o ZIP.
 
-### 7.3 Instalar dependências de desenvolvimento
-
-Abra um terminal **dentro da pasta onde está `package.json`** e execute:
+### 2. Instalar as dependências de desenvolvimento
 
 ```bash
 npm ci
 ```
 
-O comando instala as dependências registradas no `package-lock.json`. **Não é necessário instalar dependências para simplesmente abrir o HTML.**
+### 3. Executar a interface
 
-### 7.4 Configuração
-
-Não é necessário configurar senhas, contas ou arquivos `.env`. Os desafios ficam definidos no início de `script.js`.
-
-Para alterar uma pergunta, edite o objeto correspondente no array `questions` e atualize os campos `question`, `answer` e `hints` (ou `options` para quizzes). Salve o arquivo e atualize a página.
-
-### 7.5 Executar a aplicação
-
-**Jeito mais simples:** dê dois cliques em `index.html` e abra no navegador.
-
-**Alternativa com servidor local:** com Python instalado, na raiz do projeto:
+Abra `index.html` em um navegador. Como alternativa, para servir a aplicação localmente:
 
 ```bash
-python -m http.server 8080
+npx http-server -p 8080 .
 ```
 
-Depois abra **http://localhost:8080**. Para encerrar o servidor, pressione `Ctrl + C` no terminal.
+Acesse `http://localhost:8080/index.html`. O comando acima pode solicitar a instalação do pacote `http-server` caso não esteja disponível.
 
-> O servidor HTTP é opcional para usar o aplicativo, mas é útil em testes de navegador e publicação local.
+**Configuração:** a aplicação web não exige servidor de banco de dados nem credenciais. Os scripts de teste estão no `package.json`.
 
----
+## 9. APIs, banco de dados e variáveis de ambiente
 
-## 🗃️ 8. APIs, banco de dados e variáveis de ambiente
+**API:** não se aplica. O GitBot não expõe endpoints HTTP próprios.
 
-| Item | Situação no GitBot |
+**Banco de dados:** não utiliza banco relacional ou remoto. O progresso é armazenado no `localStorage` do navegador, com a chave `gitbot_progress`.
+
+**Variáveis de ambiente:** não são necessárias para o funcionamento básico da interface. A configuração da pipeline e do Lighthouse está nos arquivos do repositório.
+
+## 10. Organização da lógica
+
+| Função ou estrutura | Responsabilidade |
 |---|---|
-| **API própria** | Não se aplica. A lógica é executada no navegador. |
-| **Banco de dados** | Não existe banco de dados externo. |
-| **Armazenamento local** | `saveProgress()` e `loadProgress()` usam a chave `gitbot_progress` do `localStorage`. |
-| **Variáveis de ambiente** | Não são necessárias para executar a aplicação. |
-| **Autenticação** | Não existe login ou controle de usuários. |
+| `questions` | Conjunto de perguntas, respostas e dicas. |
+| `startApp()` | Abre a tela do chat. |
+| `askQuestion()` | Apresenta o desafio atual. |
+| `sendMessage()` | Processa a mensagem digitada. |
+| `checkAnswer()` | Confere a resposta. |
+| `requestHint()` | Fornece dicas. |
+| `addScore()` | Atualiza a pontuação. |
+| `updateScoreUI()` | Atualiza pontos, nível e progresso visual. |
+| `resetChat()` | Reinicia a conversa. |
+| `saveProgress()` / `loadProgress()` | Salvam e recuperam o progresso local. |
 
-**Atenção sobre o progresso:** as funções de salvar e carregar estão implementadas em `script.js`, mas **não são chamadas automaticamente** no fluxo atual. Portanto, não conte com a recuperação do progresso após recarregar a página sem antes integrar essas chamadas.
+## 11. Testes
 
----
+O `package.json` define comandos independentes:
 
-## 🧪 9. Estratégia de qualidade
-
-O projeto prevê três tipos de verificação: **unitária** (funções isoladas), **integração** (interação entre interface e comportamento) e **performance/acessibilidade** (qualidade da página).
-
-| Tipo | Ferramenta | Estado atual |
+| Tipo | Comando | Situação no ZIP analisado |
 |---|---|---|
-| Unitário | Jest | Arquivo de testes presente. |
-| Integração | Cypress | Dependência e comando presentes, **mas não há testes `cypress/e2e` no ZIP**. |
-| Performance | Lighthouse CI | Configuração e comando presentes; resultado depende da execução. |
+| Unitário | `npm run test:unit` | Existe arquivo Jest em `tests/unit/`. |
+| Integração | `npm run test:integration` | Cypress está configurado, mas o ZIP não contém testes em `cypress/e2e/`. |
+| Performance | `npm run test:performance` | Lighthouse CI está configurado em `.lighthouserc.json`. |
+| Todos | `npm run test:all` | Executa os três comandos em sequência; pode falhar na etapa de integração sem testes Cypress. |
 
-## ✅ 10. Testes — passo a passo
+Para performance, sirva a página em `http://localhost:8080/index.html` antes de executar o Lighthouse, conforme a configuração atual.
 
-Abra o terminal na raiz do projeto e instale as dependências com `npm ci` antes de executar os testes.
-
-### 10.1 Testes unitários
-
-```bash
-npm run test:unit
-```
-
-O arquivo `tests/unit/gameLogic.test.js` verifica comparação de respostas, tolerância a espaços e maiúsculas, rejeição de resposta incorreta e classificação de níveis. **Esses testes usam funções de exemplo declaradas no próprio arquivo de teste**, e não importam diretamente a lógica de `script.js`.
-
-### 10.2 Testes de integração
-
-```bash
-npm run test:integration
-```
-
-**Limitação atual:** esse comando chama Cypress, mas o ZIP ainda não contém os testes `cypress/e2e`. É necessário criar os cenários para que a etapa realmente valide a aplicação.
-
-### 10.3 Performance e acessibilidade
-
-```bash
-npm run test:performance
-```
-
-O projeto possui `.lighthouserc.json`, mas a configuração atual combina `staticDistDir` e uma URL explícita. **Revise essa configuração antes de considerar o resultado confiável.** Na pipeline, também existe uma etapa que inicia `http-server` na porta 8080.
-
-### 10.4 Executar todos os testes
-
-```bash
-npm run test:all
-```
-
-O comando executa os três tipos em sequência. **Na versão atual, ele não deverá concluir com sucesso enquanto a configuração e os arquivos de integração não forem ajustados.**
-
-### 10.5 Testes manuais recomendados
+### Casos de teste manuais
 
 | Ação | Resultado esperado |
 |---|---|
-| Iniciar o GitBot | O chat abre com a primeira pergunta. |
-| Responder `git status` na primeira pergunta | Mostra acerto, soma 10 pontos e avança. |
-| Digitar uma resposta errada | Mostra aviso e permite tentar novamente. |
-| Pedir dica | Exibe uma dica para a pergunta atual. |
-| Responder o quiz com **B** | Aceita a resposta correta. |
-| Reiniciar conversa | Volta à primeira pergunta com pontuação zerada. |
-| Digitar `sair` | Solicita confirmação de saída. |
+| Iniciar o GitBot | Chat exibe mensagem inicial e primeira pergunta. |
+| Responder `git status` à pergunta inicial | Resposta reconhecida como correta. |
+| Solicitar dica | Bot apresenta uma dica para a pergunta atual. |
+| Responder incorretamente | Bot informa que a resposta não está correta. |
+| Acertar desafios | Pontuação e nível são atualizados conforme as regras. |
+| Reiniciar conversa | Chat e pontuação são reiniciados. |
 
----
+### Integração contínua
 
-## 🔄 11. Integração contínua (CI)
+O workflow `.github/workflows/pipeline.yml` é acionado por **push** e **pull request** nas branches `main` e `master`. Possui jobs para Jest, Cypress e Lighthouse CI.
 
-O arquivo `.github/workflows/pipeline.yml` define três jobs no GitHub Actions:
+**Limitações atuais:** os jobs de Cypress e Lighthouse usam `|| true`, permitindo que terminem sem marcar falha mesmo quando o comando de teste falha. Além disso, não há arquivos Cypress no ZIP. Para uma CI que bloqueie alterações com falhas, é necessário implementar os testes de integração e remover esses tratamentos.
 
-```mermaid
-flowchart LR
-    A[Push ou Pull Request] --> B[GitHub Actions]
-    B --> C[Jest - unitários]
-    B --> D[Cypress - integração]
-    B --> E[Lighthouse - performance]
-```
+## 12. Deploy
 
-**Quando executa:** em `push` ou `pull_request` nas branches `main` e `master`.
+O GitBot é uma aplicação web estática. Para disponibilizá-la, publique `index.html`, `style.css` e `script.js` em uma hospedagem de sites estáticos, como GitHub Pages.
 
-**Como acompanhar:** abra o repositório no GitHub → aba **Actions** → selecione a execução → abra cada job para consultar os logs.
+Procedimento sugerido com GitHub Pages:
+1. Envie o projeto ao GitHub.
+2. No repositório, abra **Settings → Pages**.
+3. Selecione a branch e a pasta que contêm `index.html`.
+4. Salve e aguarde a publicação.
+5. Acesse a URL fornecida pelo GitHub e teste o chat.
 
-**Limitações importantes:** as etapas de Cypress e Lighthouse usam `|| true` no workflow original. Isso permite que o job termine sem erro mesmo quando o comando falha. Para ter uma CI que bloqueie problemas de verdade, é necessário criar os testes Cypress, ajustar o Lighthouse e remover esses `|| true`.
+Não há deploy de API nem migração de banco de dados.
 
----
+## 13. Boas práticas e limitações
 
-## 🌐 12. Deploy (publicação)
+- Mantenha os arquivos de interface e testes organizados.
+- Não publique `node_modules/` no repositório; utilize `.gitignore`.
+- Não armazene senhas ou dados sensíveis no código ou no `localStorage`.
+- O progresso salvo no navegador não é sincronizado entre dispositivos.
+- As respostas são avaliadas pela lógica implementada; o sistema **não executa** comandos Git reais.
+- Complete os testes Cypress antes de afirmar que os três tipos de teste estão implementados e passando.
 
-Por ser um site estático, o GitBot pode ser publicado no **GitHub Pages**, sem backend.
+## 14. Entregáveis
 
-### Publicar no GitHub Pages
-
-1. Envie os arquivos do projeto para um repositório no GitHub.
-2. Abra **Settings → Pages**.
-3. Em **Build and deployment**, selecione **Deploy from a branch**.
-4. Escolha a branch `main` (ou a branch utilizada no projeto) e a pasta **`/(root)`**.
-5. Clique em **Save**.
-6. Aguarde a publicação e abra o endereço informado pelo GitHub Pages.
-
-**Antes de publicar:** verifique se `index.html`, `style.css` e `script.js` estão na raiz e se os arquivos carregam corretamente. A biblioteca de ícones Font Awesome é acessada por CDN e pode precisar de conexão com a internet.
-
----
-
-## 🔐 13. Boas práticas e limitações
-
-- Não publique senhas ou informações pessoais em arquivos do projeto.
-- Não envie `node_modules/` para o GitHub; mantenha `package.json` e `package-lock.json` versionados.
-- Documente mudanças nas perguntas, nos testes e na configuração da CI.
-- O progresso local não é sincronizado entre navegadores ou dispositivos.
-- A versão atual tem cinco desafios e não executa comandos Git reais.
-- Para salvar o progresso automaticamente, conecte `saveProgress()` e `loadProgress()` aos eventos corretos do aplicativo.
-- Antes de afirmar que a CI está validando integração e performance, corrija as limitações indicadas na seção de testes.
-
----
-
-## 📦 14. Entrega e checklist
-
-- [x] Objetivo, problema e escopo documentados.
-- [x] Requisitos funcionais e não funcionais descritos.
-- [x] Tecnologias, arquitetura e componentes explicados.
-- [x] Pré-requisitos e instalação passo a passo.
-- [x] Configuração e execução documentadas.
-- [x] APIs, banco de dados e variáveis de ambiente esclarecidos.
-- [x] Procedimentos de testes e deploy descritos.
-- [x] Limitações da versão atual identificadas.
-- [ ] Publicar o `README.md` atualizado no repositório do GitHub.
-- [ ] Ajustar os testes de integração e a configuração de performance, se exigido na avaliação.
-
----
-
-<div align="center">
-
-**🤖 GitBot — Aprender Git fica mais fácil praticando!**
-
-</div>
+- Código-fonte do GitBot.
+- `README.md` com documentação do projeto.
+- Configuração de testes e pipeline de CI.
+- Demonstração da aplicação web e dos resultados dos testes disponíveis.
