@@ -3,16 +3,9 @@
 # 🤖 GitBot — Aprenda Git na Prática
 
 **Aprenda comandos Git com perguntas, dicas e desafios interativos.**
+Aplicação web educativa para aprender e praticar comandos Git por meio de um chat interativo, perguntas, dicas e quizzes. O projeto também demonstra testes automatizados e uma pipeline de integração contínua com GitHub Actions.
 
-![HTML5](https://img.shields.io/badge/HTML5-interface-E34F26?logo=html5&logoColor=white) ![CSS3](https://img.shields.io/badge/CSS3-estilos-1572B6?logo=css3&logoColor=white) ![JavaScript](https://img.shields.io/badge/JavaScript-lógica-F7DF1E?logo=javascript&logoColor=black) ![Jest](https://img.shields.io/badge/Jest-testes-C21325?logo=jest&logoColor=white) ![GitHub Actions](https://img.shields.io/badge/GitHub_Actions-CI-2088FF?logo=githubactions&logoColor=white)
-
-*Projeto acadêmico — Análise e Desenvolvimento de Sistemas (ADS)*
-
-[Conhecer o projeto](#-1-objetivo-problema-e-escopo) · [Instalar e executar](#-7-instalação-configuração-e-execução) · [Testar](#-10-testes) · [Publicar](#-12-deploy-publicação)
-
-</div>
-
----
+Projeto acadêmico de Análise e Desenvolvimento de Sistemas (ADS).
 
 ## 📖 1. Objetivo, problema e escopo
 
@@ -43,7 +36,7 @@ Quem está começando a utilizar Git pode ter dificuldade para **lembrar os coma
 
 ### Requisitos funcionais
 
-| ID | O sistema deve... |
+| ID | Requisito |
 |---|---|
 | **RF01** | Exibir perguntas sobre comandos Git. |
 | **RF02** | Receber respostas digitadas pelo usuário. |
